@@ -1,0 +1,464 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Wizarding World</title>
+
+<style>
+
+/* GENERAL SETTINGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #000001;
+    color: white;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION BAR */
+
+header {
+    width: 100%;
+    padding: 22px 8%;
+    background: rgba(0,0,0,0.9);
+    border-bottom: 2px solid #D3A625;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #D3A625;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #D3A625;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 25px 50px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.9)
+    ),
+    url("hogwarts.jpg") center/cover no-repeat;
+}
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 7vw, 75px);
+    color: #D3A625;
+    text-shadow: 0 0 20px #740001;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+.main-button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: #740001;
+    color: white;
+    border: 2px solid #D3A625;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #D3A625;
+    color: black;
+    transform: scale(1.08);
+}
+
+/* FIRE GLOW */
+
+.fire {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+
+    background: linear-gradient(
+        90deg,
+        #740001,
+        #ff4500,
+        #D3A625,
+        #ff4500,
+        #740001
+    );
+
+    box-shadow:
+        0 0 15px #ff4500,
+        0 0 35px #D3A625;
+
+    animation: fireGlow 2s infinite alternate;
+    z-index: 200;
+}
+
+@keyframes fireGlow {
+    from {
+        opacity: 0.5;
+        filter: brightness(0.8);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1.7);
+    }
+}
+
+/* FLOATING MAGIC STARS */
+
+.spark {
+    position: fixed;
+    color: #D3A625;
+    pointer-events: none;
+    z-index: 150;
+    animation: sparkle 3s linear forwards;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-180px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ABOUT SECTION */
+
+section {
+    padding: 90px 10%;
+    text-align: center;
+}
+
+.section-title {
+    color: #D3A625;
+    font-size: 38px;
+    margin-bottom: 25px;
+}
+
+.about p {
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 18px;
+    color: #dddddd;
+}
+
+/* HOUSES SECTION */
+
+.houses {
+    background: #100000;
+}
+
+.house-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.house-card {
+    padding: 35px 20px;
+    border: 1px solid #D3A625;
+    border-radius: 15px;
+    background: #1b0808;
+    transition: 0.3s;
+}
+
+.house-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #740001;
+}
+
+.house-card h3 {
+    font-size: 27px;
+    color: #D3A625;
+    margin-bottom: 15px;
+}
+
+.house-card p {
+    line-height: 1.7;
+}
+
+/* MAGIC SECTION */
+
+.magic {
+    background:
+    linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.9)),
+    url("hogwarts.jpg") center/cover fixed;
+}
+
+.magic h2 {
+    color: #D3A625;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px;
+    background: #050000;
+    border-top: 1px solid #D3A625;
+    text-align: center;
+    color: #D3A625;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0 7px;
+        font-size: 13px;
+    }
+
+    .house-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- FIRE EFFECT -->
+<div class="fire"></div>
+
+<!-- NAVIGATION -->
+<header>
+
+    <div class="logo">
+        ⚡ THE WIZARDING WORLD
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#houses">Houses</a>
+        <a href="#magic">Magic</a>
+    </nav>
+
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+
+    <h1>WELCOME TO HOGWARTS</h1>
+
+    <p>
+        A world of magic, mystery and adventure.
+        Discover the wonders of a magical school
+        and find your place in the wizarding world.
+    </p>
+
+    <button class="main-button" onclick="welcome()">
+        ENTER THE MAGICAL WORLD
+    </button>
+
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2 class="section-title">
+        ABOUT HOGWARTS
+    </h2>
+
+    <p>
+        Hogwarts is a legendary school of witchcraft
+        and wizardry. It is a place filled with magical
+        discoveries, friendship, courage and adventure.
+
+        Explore the four houses and discover the
+        qualities that make each house special.
+    </p>
+
+</section>
+
+<!-- FOUR HOUSES -->
+<section class="houses" id="houses">
+
+    <h2 class="section-title">
+        THE FOUR HOUSES
+    </h2>
+
+    <div class="house-container">
+
+        <div class="house-card">
+            <h3>🦁 GRYFFINDOR</h3>
+            <p>
+                Known for courage, bravery,
+                determination and daring.
+            </p>
+        </div>
+
+        <div class="house-card">
+            <h3>🐍 SLYTHERIN</h3>
+            <p>
+                Known for ambition, resourcefulness,
+                leadership and determination.
+            </p>
+        </div>
+
+        <div class="house-card">
+            <h3>🦅 RAVENCLAW</h3>
+            <p>
+                Known for intelligence, creativity,
+                wisdom and curiosity.
+            </p>
+        </div>
+
+        <div class="house-card">
+            <h3>🦡 HUFFLEPUFF</h3>
+            <p>
+                Known for loyalty, patience,
+                kindness and hard work.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAGIC -->
+<section class="magic" id="magic">
+
+    <h2>THE MAGIC NEVER ENDS</h2>
+
+    <p>
+        Every great adventure begins with a little
+        curiosity and a touch of magic.
+    </p>
+
+    <button class="main-button" onclick="magicMessage()">
+        CAST A SPELL ✨
+    </button>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <p>⚡ THE WIZARDING WORLD ⚡</p>
+
+    <p>
+        A personal magical-school inspired website.
+    </p>
+
+    <p>
+        Created for a personal project.
+    </p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+function welcome() {
+
+    alert(
+        "Welcome, young wizard! " +
+        "Your magical journey begins now!"
+    );
+
+}
+
+function magicMessage() {
+
+    alert(
+        "✨ Magic is everywhere. " +
+        "Keep exploring the wizarding world!"
+    );
+
+}
+
+/* CREATE FLOATING SPARKLES */
+
+function createSpark() {
+
+    const spark = document.createElement("div");
+
+    spark.className = "spark";
+    spark.innerHTML = "✦";
+
+    spark.style.left = Math.random() * 100 + "vw";
+    spark.style.top = (65 + Math.random() * 30) + "vh";
+    spark.style.fontSize = (10 + Math.random() * 18) + "px";
+
+    document.body.appendChild(spark);
+
+    setTimeout(function() {
+        spark.remove();
+    }, 3000);
+
+}
+
+setInterval(createSpark, 350);
+
+</script>
+
+</body>
+</html>
+```
